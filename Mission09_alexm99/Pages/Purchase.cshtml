@@ -1,0 +1,47 @@
+﻿@page
+@model Mission09_alexm99.Pages.PurchaseModel
+@{
+}
+
+<h2>Your Purchase Order</h2>
+<table class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Cost</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var i in Model.basket.Items)
+        {
+            <tr>
+                <td>@i.Book.Title</td>
+                <td>@i.Quantity</td>
+                <td>@i.Book.Price</td>
+                <td>@(i.Quantity * i.Book.Price)</td>
+            </tr>
+        }
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="3">Total</td>
+            <td>@Model.basket.CalculateTotal().ToString("c")</td>
+        </tr>
+    </tfoot>
+</table>
+
+<div>
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Purchasing</a>
+</div>
+
+
+<figure>
+    <figcaption>Listen to Celebration by Kool The Gang:</figcaption>
+    <audio controls="controls">
+    <source src="~/lib/audio/Kool_The_Gang_-_Celebration_(Jesusful.com).mp3" type="audio/mpeg" />
+    </audio>
+</figure>

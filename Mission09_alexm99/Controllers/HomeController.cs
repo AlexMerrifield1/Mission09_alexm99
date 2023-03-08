@@ -15,20 +15,27 @@ namespace Mission09_alexm99.Controllers
         {
             repo = temp;
         }
-        public IActionResult Index(int pageNum)
+        public IActionResult Index(string bookCategory, int pageNum = 1)
         {
             int pageSize = 10;
 
             var x = new BooksViewModel
             {
                 Books = repo.Books
-                .OrderBy(b => b.BookId)
+                .Where(b => b.Category == bookCategory || bookCategory == null)
+                .OrderBy(b => b.Title)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumProjects = repo.Books.Count(),
+                    TotalNumProjects =
+                        (bookCategory == null
+                            ? repo.Books.Count()
+                            //this statement is grabbing the group of projects and using that count instead to populate
+                            //the number of page buttons needed on the page.
+                            : repo.Books.Where(x => x.Category  == bookCategory).Count()),
+
                     ProjectsPerPage = pageSize,
                     CurrentPage = pageNum
                 }
