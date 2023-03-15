@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Mission09_alexm99.Conponents
 {
-    public class PurchaseSummaryViewComponent : ViewComponent
+    public class CartSummaryViewComponent : ViewComponent
     {
-        private Purchase purchase;
-        public PurchaseSummaryViewComponent(Purchase purchaseService)
+        private Basket basket;
+        public CartSummaryViewComponent(Basket basketService)
         {
-            purchase = purchaseService;
+            basket = basketService;
         }
         public IViewComponentResult Invoke()
         {
-            return View(purchase);
+            return View(basket);
         }
     }
 }

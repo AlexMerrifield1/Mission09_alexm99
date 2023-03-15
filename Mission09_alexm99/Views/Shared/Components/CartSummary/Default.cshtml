@@ -3,19 +3,19 @@
 *@
 @{
 }
-@model Mission09_alexm99.Pages.PurchaseModel
+@model Basket
 
 <div class="">
-    @if (Model.basket.Items.Count() > 0)
+    @if (Model.Items.Count() > 0)
     {
         <small class="navbar-text">
             <b>Your cart:</b>
             @*@Model.line.Sum(x => x.Quantity) item(s)*@
-            @Model.basket.Items.Sum(x => x.Quantity) item(s)
-            @Model.basket.CalculateTotal().ToString("c")
+            @Model.Items.Sum(x => x.Quantity) item(s)
+            @Model.CalculateTotal().ToString("c")
         </small>
     }
-<a class="btn btn-sm btn-secondary navbar-btn" asp-page="/Purchase"
+<a class="btn btn-sm btn-secondary navbar-btn" asp-page="/Cart"
    asp-route-returnUrl="@ViewContext.HttpContext.Request.PathAndQuery()">
     <i class="fa fa-shopping-cart"></i>
 </a>

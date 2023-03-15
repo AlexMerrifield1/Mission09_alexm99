@@ -9,8 +9,8 @@ using Mission09_alexm99.Models;
 namespace Mission09_alexm99.Migrations
 {
     [DbContext(typeof(BookstoreContext))]
-    [Migration("20230315200319_AddPurchasesTable")]
-    partial class AddPurchasesTable
+    [Migration("20230315201852_Purchases")]
+    partial class Purchases
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
